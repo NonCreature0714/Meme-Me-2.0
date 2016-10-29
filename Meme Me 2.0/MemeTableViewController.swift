@@ -27,18 +27,29 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: TableView Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("Number of memes is: ", memes.count)
         return memes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell")!
-        //let meme =
-        //TODO: populate cell
+        let meme = memes[indexPath.row]
+        //cell.imageView?.image = meme.memedImage
+        //cell.imageView? = UIImageView(image: meme.memedImage)
+        //cell.
+        //TOOD: fix
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //TODO: move to view of meme
+        let detailController = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
+        let meme = memes[(indexPath as NSIndexPath).row]
+        //detailController.memeImage.image = meme.memedImage
+        let imageView = UIImageView(image: meme.memedImage)
+        detailController.memeImage = imageView
+        self.navigationController?.pushViewController(detailController, animated: true)
     }
     
     

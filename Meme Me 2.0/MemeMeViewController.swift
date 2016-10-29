@@ -22,7 +22,6 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     
     @IBOutlet weak var pickerToolbar: UIToolbar!
-    //@IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var cancelToolbarButton: UIBarButtonItem!
     @IBOutlet weak var shareOrCancelToolbar: UIToolbar!
     
@@ -42,6 +41,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         super.viewWillAppear(animated)
         cameraPickerButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         subcribeToKeyboardNotifications()
+        super.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -55,7 +55,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         topTextField.delegate = self
         bottomTextField.delegate = self
         configureUI()
-        super.tabBarController?.tabBar.isHidden = true;
+        super.tabBarController?.tabBar.isHidden = true
     }
     
     override var prefersStatusBarHidden : Bool {
@@ -83,8 +83,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
         
         present(controller, animated: true, completion: {
-            action in
-            controller.prefersStatusBarHidden
+            ACTION in controller.prefersStatusBarHidden
         })
         
         shareButton.isEnabled = true

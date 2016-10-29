@@ -19,6 +19,7 @@
 		4E94874F1DAB1C2C008F2593 /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E94874E1DAB1C2C008F2593 /* Meme.swift */; };
 		4E9487511DAB1CC9008F2593 /* MemeMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9487501DAB1CC9008F2593 /* MemeMeViewController.swift */; };
 		4E9487531DAB1D4D008F2593 /* MemeMeViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9487521DAB1D4D008F2593 /* MemeMeViewController+Extension.swift */; };
+		4E9BACCE1DC538D900BC0E3B /* MemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9BACCD1DC538D900BC0E3B /* MemeDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		4E94874E1DAB1C2C008F2593 /* Meme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
 		4E9487501DAB1CC9008F2593 /* MemeMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeMeViewController.swift; sourceTree = "<group>"; };
 		4E9487521DAB1D4D008F2593 /* MemeMeViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MemeMeViewController+Extension.swift"; sourceTree = "<group>"; };
+		4E9BACCD1DC538D900BC0E3B /* MemeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 				4E878B971DB6A71A00215DB4 /* MemeTableViewController.swift */,
 				4E878B991DB6A73000215DB4 /* MemeCollectionViewController.swift */,
 				4E878B9B1DB6AC8E00215DB4 /* MemeCollectionViewCell.swift */,
+				4E9BACCD1DC538D900BC0E3B /* MemeDetailViewController.swift */,
 			);
 			path = "Meme Me 2.0";
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				4E878B9C1DB6AC8E00215DB4 /* MemeCollectionViewCell.swift in Sources */,
 				4E878B9A1DB6A73000215DB4 /* MemeCollectionViewController.swift in Sources */,
 				4E9487211DAB19E5008F2593 /* AppDelegate.swift in Sources */,
+				4E9BACCE1DC538D900BC0E3B /* MemeDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

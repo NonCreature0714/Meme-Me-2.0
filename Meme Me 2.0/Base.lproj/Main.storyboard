@@ -66,7 +66,7 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ig6-AE-6ga">
                                 <items>
-                                    <barButtonItem systemItem="camera" id="DZ9-ob-OOL">
+                                    <barButtonItem tag="1" systemItem="camera" id="DZ9-ob-OOL">
                                         <connections>
                                             <action selector="pickImage:" destination="GaT-20-GhO" id="TX1-gX-diO"/>
                                         </connections>

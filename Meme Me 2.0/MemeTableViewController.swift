@@ -18,6 +18,7 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         super.tabBarController?.tabBar.isHidden = false;
         print("In MemeTableViewController, viewDidLoad() called.")
+        reloadInputViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,19 +29,21 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     
+
     //MARK: TableView Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Number of rows in table view: ", memes.count)
         return memes.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell")!
-        let meme = memes[indexPath.row]
+        let meme = memes[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = meme.topTextField
-        let imageView = UIImageView(image: meme.memedImage)
-        cell.imageView?.image = imageView.image
+        //let imageView = UIImageView(image: meme.memedImage)
+        //cell.imageView?.image = meme.memedImage
+        cell.imageView?.image = UIImage(cgImage: meme.memedImage as! CGImage)
         print("In MemeMeTableViewController, tableView(cellForRowAt) called.")
         return cell
     }
@@ -51,6 +54,8 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         detailController.meme = meme
         self.navigationController?.pushViewController(detailController, animated: true)
     }
+    
+    
     
     
     

@@ -13,6 +13,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDataSource
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
+    
     var memes: [Meme]!
     
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDataSource
         super.viewWillAppear(animated)
         let applicationDelegate = (UIApplication.shared.delegate as! AppDelegate)
         memes = applicationDelegate.memes
+        reloadInputViews()
         print("In MemeCollectionViewController, viewWillAppear() called; number of memes: ", memes.count)
     }
     
@@ -38,9 +40,8 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! MemeCollectionViewCell
-        let meme = memes[indexPath.row]
-        let imageView = UIImageView(image: meme.memedImage)
-        cell.memeImageView = imageView
+        let meme = memes[(indexPath as NSIndexPath).row]
+        cell.memeImageView.image = meme.memedImage
         print("In MemeMeCollectionViewController, collectionView(cellForItemAt) called.")
         return cell
     }

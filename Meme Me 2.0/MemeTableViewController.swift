@@ -31,7 +31,7 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
     //MARK: TableView Datasource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Number of memes is: ", memes.count)
+        print("Number of rows in table view: ", memes.count)
         return memes.count
     }
     
@@ -41,6 +41,7 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         cell.textLabel?.text = meme.topTextField
         let imageView = UIImageView(image: meme.memedImage)
         cell.imageView?.image = imageView.image
+        print("In MemeMeTableViewController, tableView(cellForRowAt) called.")
         return cell
     }
     

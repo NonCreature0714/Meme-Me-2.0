@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -172,7 +171,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableCell" textLabel="Nus-MK-eU9" style="IBUITableViewCellStyleDefault" id="vty-OR-Y6l">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableCell" textLabel="Nus-MK-eU9" detailTextLabel="PGH-Sj-R7p" style="IBUITableViewCellStyleSubtitle" id="vty-OR-Y6l">
                                         <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vty-OR-Y6l" id="PWD-y1-YoF">
@@ -180,9 +179,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nus-MK-eU9">
-                                                    <frame key="frameInset" minX="15" width="345" height="43"/>
+                                                    <frame key="frameInset" minX="15" minY="4" width="34" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PGH-Sj-R7p">
+                                                    <frame key="frameInset" minX="15" minY="25" width="44" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -245,28 +251,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="141" height="122"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jgc-EV-lic" userLabel="BottomText">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="qUZ-PU-yBS"/>
-                                            </constraints>
-                                            <attributedString key="attributedText"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="94j-OE-PH4"/>
                                     </subviews>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="jgc-EV-lic" firstAttribute="trailing" secondItem="YsR-kn-CSn" secondAttribute="trailingMargin" id="1an-E5-lGY"/>
+                                    <constraint firstItem="94j-OE-PH4" firstAttribute="centerY" secondItem="YsR-kn-CSn" secondAttribute="centerY" id="82n-gi-G8l"/>
                                     <constraint firstItem="94j-OE-PH4" firstAttribute="leading" secondItem="YsR-kn-CSn" secondAttribute="leading" constant="12" id="IKL-qY-iPm"/>
                                     <constraint firstAttribute="trailing" secondItem="94j-OE-PH4" secondAttribute="trailing" constant="13" id="Ob7-o8-k9i"/>
-                                    <constraint firstItem="jgc-EV-lic" firstAttribute="leading" secondItem="YsR-kn-CSn" secondAttribute="leadingMargin" constant="2" id="cEd-fO-sMo"/>
-                                    <constraint firstItem="94j-OE-PH4" firstAttribute="top" secondItem="jgc-EV-lic" secondAttribute="top" constant="10" id="f35-Qs-h7d"/>
-                                    <constraint firstItem="jgc-EV-lic" firstAttribute="top" secondItem="YsR-kn-CSn" secondAttribute="top" id="jwR-br-SDo"/>
                                     <constraint firstAttribute="bottom" secondItem="94j-OE-PH4" secondAttribute="bottom" constant="10" id="lCl-ea-zUx"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="memeImageView" destination="94j-OE-PH4" id="9Qi-DR-Sjf"/>
-                                    <outlet property="topTextField" destination="jgc-EV-lic" id="8E0-9K-z1T"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -293,6 +288,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="bVl-se-Chn"/>
+        <segue reference="Sgc-B8-Yzx"/>
     </inferredMetricsTieBreakers>
 </document>

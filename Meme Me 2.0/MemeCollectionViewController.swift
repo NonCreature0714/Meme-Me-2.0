@@ -41,6 +41,7 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDataSource
         let meme = memes[indexPath.row]
         let imageView = UIImageView(image: meme.memedImage)
         cell.memeImageView = imageView
+        print("In MemeMeCollectionViewController, collectionView(cellForItemAt) called.")
         return cell
     }
     

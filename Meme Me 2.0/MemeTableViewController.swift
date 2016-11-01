@@ -9,11 +9,12 @@
 import Foundation
 import UIKit
 
-class MemeTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MemeTableViewController: UITableViewController {
     
-    
+    //MARK: members
     var memes: [Meme]!
     
+    //MARK: overriden UIViewController methods
     override func viewDidLoad() {
         super.viewDidLoad()
         super.tabBarController?.tabBar.isHidden = false;
@@ -25,30 +26,29 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewWillAppear(animated)
         let applicationDelegate = (UIApplication.shared.delegate as! AppDelegate)
         memes = applicationDelegate.memes
+        tableView?.reloadData()
         print("In MemeTableViewController, viewWillAppear() called; number of memes: ", memes.count)
+        
     }
-    
-    
 
-    //MARK: TableView Datasource
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    //MARK: Overriden TableView Datasource methods
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Number of rows in table view: ", memes.count)
         return memes.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell")!
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         let meme = memes[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = meme.topTextField
         //let imageView = UIImageView(image: meme.memedImage)
-        //cell.imageView?.image = meme.memedImage
-        cell.imageView?.image = UIImage(cgImage: meme.memedImage as! CGImage)
+        cell.imageView?.image = meme.memedImage
+        //cell.imageView?.image = UIImage(cgImage: meme.memedImage as! CGImage)
         print("In MemeMeTableViewController, tableView(cellForRowAt) called.")
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailController = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         let meme = memes[(indexPath as NSIndexPath).row]
         detailController.meme = meme

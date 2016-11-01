@@ -11,9 +11,9 @@ import UIKit
 
 import UIKit
 
-class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
+class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    //MARK: IBOutlets.
+    //MARK: IBOutlet(s).
     @IBOutlet weak var imagePickedView: UIImageView!
     @IBOutlet weak var cameraPickerButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
@@ -26,7 +26,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var shareOrCancelToolbar: UIToolbar!
     
     
-    //MARK: Class members, enums, and attributes.
+    //MARK: Member(s)
     var meme = Meme()
     enum SourceSelection{ case album, camera }
     let memeTextAttributes = [
@@ -35,6 +35,9 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         NSStrokeWidthAttributeName: -5.0,
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         ] as [String : Any]
+    var memed: UIImage?
+    let topTextFieldDelegate = TopTextFieldDelegate()
+    let bottomTextFieldDelegate = BottomTextFieldDelegate()
     
     //MARK: Overriden UIViewController methods.
     override func viewWillAppear(_ animated: Bool) {
@@ -54,8 +57,8 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topTextField.delegate = self
-        bottomTextField.delegate = self
+        topTextField.delegate = topTextFieldDelegate
+        bottomTextField.delegate = bottomTextFieldDelegate
         configureUI()
         reset()
         super.tabBarController?.tabBar.isHidden = true
@@ -93,6 +96,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         shareButton.isEnabled = true
     }
     
+    //MARK: IBActions
     @IBAction func shareMeme(_ sender: AnyObject) {
         let activityController = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: nil)
         
@@ -122,34 +126,15 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: UITextFieldDelegate methods.
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        var newText = textField.text! as NSString
-        newText = newText.replacingCharacters(in: range, with: string) as NSString
-        let textSize: CGSize = newText.size(attributes: [NSFontAttributeName: textField.font!])
-        return textSize.width < textField.bounds.size.width
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.text! == "TOP" || textField.text! == "BOTTOM" {
-            textField.text = ""
-        }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
     
     //MARK: UIConfiguration methods.
-    func configureUI() {
+    private func configureUI() {
         configureText(topTextField)
         configureText(bottomTextField)
         hideShare(true)
     }
     
-    func configureText(_ textField: UITextField){
+    private func configureText(_ textField: UITextField){
         textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = NSTextAlignment.center
         switch textField.tag {
@@ -168,7 +153,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
     
-    func hideUIElements(_ hide: Bool) {
+    private func hideUIElements(_ hide: Bool) {
         pickerToolbar.isHidden = hide
         hideShare(hide)
         shareOrCancelToolbar.isHidden = hide
@@ -176,7 +161,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     
     //MARK: Meme generation supporting methods.
-    func generateMemedImage() -> UIImage
+    private func generateMemedImage() -> UIImage
     {
         hideUIElements(true)
         
@@ -186,23 +171,24 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         UIGraphicsEndImageContext()
         
         hideUIElements(false)
+        memed = memedImage
         
         return memedImage
     }
     
-    func hideShare(_ hide: Bool){
+    private func hideShare(_ hide: Bool){
         shareButton.isEnabled = !hide
     }
     
-    func save() {
-        meme = Meme(topTextField: topTextField.text, bottomTextField: bottomTextField.text, originalImage: imagePickedView.image, memedImage: generateMemedImage())
+    private func save() {
+        meme = Meme(topTextField: topTextField.text, bottomTextField: bottomTextField.text, originalImage: imagePickedView.image, memedImage: memed)
         
         (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
         print("In MemeMeViewController, save() called; number of memes: ", (UIApplication.shared.delegate as! AppDelegate).memes.count)
         
     }
     
-    func reset(){
+    private func reset(){
         imagePickedView.image = nil
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"

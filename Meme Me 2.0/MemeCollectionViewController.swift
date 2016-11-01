@@ -17,11 +17,16 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.tabBarController?.tabBar.isHidden = false;
         
+        print("In MemeCollectionViewController, viewDidLoad() called.")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let applicationDelegate = (UIApplication.shared.delegate as! AppDelegate)
         memes = applicationDelegate.memes
-        
-        super.tabBarController?.tabBar.isHidden = false;
+        print("In MemeCollectionViewController, viewWillAppear() called; number of memes: ", memes.count)
     }
     
     
@@ -34,19 +39,16 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! MemeCollectionViewCell
         let meme = memes[indexPath.row]
-        cell.topTextField.text = meme.topTextField
-        cell.bottomTextField.text = meme.bottomTextField
-        cell.memeImageView.image = meme.memedImage
-        
+        let imageView = UIImageView(image: meme.memedImage)
+        cell.memeImageView = imageView
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailController = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         let meme = memes[(indexPath as NSIndexPath).row]
-        //detailController.memeImage?.image = meme.memedImage
-        let imageView = UIImageView(image: meme.memedImage)
-        detailController.memeImage = imageView
+        detailController.meme = meme
+        
         self.navigationController?.pushViewController(detailController, animated: true)
     }
     

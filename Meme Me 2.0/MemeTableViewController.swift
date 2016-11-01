@@ -16,11 +16,15 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        super.tabBarController?.tabBar.isHidden = false;
+        print("In MemeTableViewController, viewDidLoad() called.")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let applicationDelegate = (UIApplication.shared.delegate as! AppDelegate)
         memes = applicationDelegate.memes
-        
-        super.tabBarController?.tabBar.isHidden = false;
+        print("In MemeTableViewController, viewWillAppear() called; number of memes: ", memes.count)
     }
     
     
@@ -34,21 +38,17 @@ class MemeTableViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell")!
         let meme = memes[indexPath.row]
-        //cell.imageView?.image = meme.memedImage
-        //cell.imageView? = UIImageView(image: meme.memedImage)
-        //cell.
-        //TOOD: fix
-        
+        cell.textLabel?.text = meme.topTextField
+        var cellImage = UIImage()
+        cellImage = meme.memedImage
+        cell.imageView?.image = cellImage
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //TODO: move to view of meme
         let detailController = storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         let meme = memes[(indexPath as NSIndexPath).row]
-        //detailController.memeImage.image = meme.memedImage
-        let imageView = UIImageView(image: meme.memedImage)
-        detailController.memeImage = imageView
+        detailController.meme = meme
         self.navigationController?.pushViewController(detailController, animated: true)
     }
     

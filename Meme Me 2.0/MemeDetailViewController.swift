@@ -13,17 +13,24 @@ class MemeDetailViewController: UIViewController {
     
     
     @IBOutlet weak var memeImage: UIImageView!
+    var meme: Meme!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        memeImage?.image = meme.memedImage
+        self.tabBarController?.tabBar.isHidden = true
+        print("In MemeDetailViewController, viewDidLoad() called.")
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //TODO: hide tab bar
-        self.tabBarController?.tabBar.isHidden = true
+        print("In MemeDetailViewController, viewWillAppear() called.")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //TODO: show tab bar
         self.tabBarController?.tabBar.isHidden = false
+        print("In MemeDetailViewController, viewWillDisappear() called.")
     }
+    
 }

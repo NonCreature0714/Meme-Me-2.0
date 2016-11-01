@@ -18,7 +18,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var cameraPickerButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     
     
     @IBOutlet weak var pickerToolbar: UIToolbar!
@@ -42,12 +42,14 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         cameraPickerButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         subcribeToKeyboardNotifications()
         super.tabBarController?.tabBar.isHidden = true
+        print("In MemeMeViewController, viewWillAppear() called.")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeToKeyboardNotifications()
         super.tabBarController?.tabBar.isHidden = false;
+        print("in MemeMeViewController, viewWillDisappear() called.")
     }
     
     override func viewDidLoad() {
@@ -55,7 +57,9 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         topTextField.delegate = self
         bottomTextField.delegate = self
         configureUI()
+        reset()
         super.tabBarController?.tabBar.isHidden = true
+        print("In MemMeViewController, viewDidLoad() called.")
     }
     
     override var prefersStatusBarHidden : Bool {
@@ -87,7 +91,6 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         })
         
         shareButton.isEnabled = true
-        shareButton.isHidden = false
     }
     
     @IBAction func shareMeme(_ sender: AnyObject) {
@@ -188,7 +191,6 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     func hideShare(_ hide: Bool){
-        shareButton.isHidden = hide
         shareButton.isEnabled = !hide
     }
     
@@ -196,6 +198,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         meme = Meme(topTextField: topTextField.text, bottomTextField: bottomTextField.text, originalImage: imagePickedView.image, memedImage: generateMemedImage())
         
         (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
+        print("In MemeMeViewController, save() called; number of memes: ", (UIApplication.shared.delegate as! AppDelegate).memes.count)
         
     }
     

@@ -28,7 +28,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     //MARK: Class members, enums, and attributes.
     var meme = Meme()
-    enum SourceSelection: Int { case album = 0, camera }
+    enum SourceSelection{ case album, camera }
     let memeTextAttributes = [
         NSStrokeColorAttributeName : UIColor.black,
         NSForegroundColorAttributeName : UIColor.white,
@@ -73,9 +73,9 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         controller.delegate = self
         
         switch sender.tag {
-        case SourceSelection.album.rawValue:
+        case 0:
             controller.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        case SourceSelection.camera.rawValue:
+        case 1:
             controller.sourceType = UIImagePickerControllerSourceType.camera
         default:
             let alertController = UIAlertController()

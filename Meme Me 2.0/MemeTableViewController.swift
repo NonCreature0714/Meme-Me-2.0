@@ -18,7 +18,6 @@ class MemeTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         super.tabBarController?.tabBar.isHidden = false;
-        print("In MemeTableViewController, viewDidLoad() called.")
         reloadInputViews()
     }
     
@@ -27,13 +26,10 @@ class MemeTableViewController: UITableViewController {
         let applicationDelegate = (UIApplication.shared.delegate as! AppDelegate)
         memes = applicationDelegate.memes
         tableView?.reloadData()
-        print("In MemeTableViewController, viewWillAppear() called; number of memes: ", memes.count)
-        
     }
 
     //MARK: Overriden TableView Datasource methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Number of rows in table view: ", memes.count)
         return memes.count
     }
 
@@ -41,10 +37,10 @@ class MemeTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         let meme = memes[(indexPath as NSIndexPath).row]
         cell.textLabel?.text = meme.topTextField
-        //let imageView = UIImageView(image: meme.memedImage)
         cell.imageView?.image = meme.memedImage
-        //cell.imageView?.image = UIImage(cgImage: meme.memedImage as! CGImage)
-        print("In MemeMeTableViewController, tableView(cellForRowAt) called.")
+        if let bottomText = meme.bottomTextField {
+            cell.detailTextLabel?.text = bottomText
+        }
         return cell
     }
     

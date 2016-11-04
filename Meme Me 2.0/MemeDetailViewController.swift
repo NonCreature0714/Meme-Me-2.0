@@ -22,18 +22,15 @@ class MemeDetailViewController: UIViewController {
         super.viewDidLoad()
         memeImage?.image = meme.memedImage
         self.tabBarController?.tabBar.isHidden = true
-        print("In MemeDetailViewController, viewDidLoad() called.")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("In MemeDetailViewController, viewWillAppear() called.")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
-        print("In MemeDetailViewController, viewWillDisappear() called.")
     }
     
 }

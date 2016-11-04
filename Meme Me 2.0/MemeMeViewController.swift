@@ -45,14 +45,12 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         cameraPickerButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         subcribeToKeyboardNotifications()
         super.tabBarController?.tabBar.isHidden = true
-        print("In MemeMeViewController, viewWillAppear() called.")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeToKeyboardNotifications()
         super.tabBarController?.tabBar.isHidden = false;
-        print("in MemeMeViewController, viewWillDisappear() called.")
     }
     
     override func viewDidLoad() {
@@ -62,7 +60,6 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         configureUI()
         reset()
         super.tabBarController?.tabBar.isHidden = true
-        print("In MemMeViewController, viewDidLoad() called.")
     }
     
     override var prefersStatusBarHidden : Bool {
@@ -183,9 +180,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     private func save() {
         meme = Meme(topTextField: topTextField.text, bottomTextField: bottomTextField.text, originalImage: imagePickedView.image, memedImage: memed)
         
-        (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
-        print("In MemeMeViewController, save() called; number of memes: ", (UIApplication.shared.delegate as! AppDelegate).memes.count)
-        
+        (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)        
     }
     
     private func reset(){

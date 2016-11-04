@@ -24,7 +24,13 @@ class MemeCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         super.tabBarController?.tabBar.isHidden = false;
         
-        print("In MemeCollectionViewController, viewDidLoad() called.")
+        let space: CGFloat = 3.0
+        let w = (self.view.frame.size.width - (2 * space)) / 3.0
+        let h = (self.view.frame.size.height - (2 * space)) /  5.0
+        
+        flowLayout.minimumLineSpacing = space
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.itemSize = CGSize(width: w, height: h)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,14 +38,12 @@ class MemeCollectionViewController: UICollectionViewController {
         let applicationDelegate = (UIApplication.shared.delegate as! AppDelegate)
         memes = applicationDelegate.memes
         reloadInputViews()
-        print("In MemeCollectionViewController, viewWillAppear() called; number of memes: ", memes.count)
         flowLayout.collectionView?.reloadData()
     }
     
     
     //MARK: Overriden CollectionView Datasource methods.
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("Number of items in colleciton view: " , memes.count)
         return memes.count
     }
     
@@ -47,7 +51,6 @@ class MemeCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! MemeCollectionViewCell
         let meme = memes[(indexPath as NSIndexPath).row]
         cell.memeImageView.image = meme.memedImage
-        print("In MemeMeCollectionViewController, collectionView(cellForItemAt) called.")
         return cell
     }
     

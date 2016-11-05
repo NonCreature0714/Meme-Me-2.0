@@ -11,7 +11,7 @@ import UIKit
 
 import UIKit
 
-class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     //MARK: IBOutlet(s).
     @IBOutlet weak var imagePickedView: UIImageView!
@@ -28,16 +28,13 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     //MARK: Member(s)
     var meme = Meme()
-    enum SourceSelection{ case album, camera }
-    let memeTextAttributes = [
+        let memeTextAttributes = [
         NSStrokeColorAttributeName : UIColor.black,
         NSForegroundColorAttributeName : UIColor.white,
         NSStrokeWidthAttributeName: -5.0,
-        NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSFontAttributeName : UIFont(name: "Impact", size: 40)!,
         ] as [String : Any]
     var memed: UIImage?
-    let topTextFieldDelegate = TopTextFieldDelegate()
-    let bottomTextFieldDelegate = BottomTextFieldDelegate()
     
     //MARK: Overriden UIViewController methods.
     override func viewWillAppear(_ animated: Bool) {
@@ -55,14 +52,15 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topTextField.delegate = topTextFieldDelegate
-        bottomTextField.delegate = bottomTextFieldDelegate
+        topTextField.delegate = self
+        bottomTextField.delegate = self
+        
         configureUI()
         reset()
         super.tabBarController?.tabBar.isHidden = true
     }
     
-    override var prefersStatusBarHidden : Bool {
+    override public var prefersStatusBarHidden: Bool {
         return true
     }
     
@@ -86,9 +84,10 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
             present(alertController, animated: true, completion: nil)
         }
         
+        
         present(controller, animated: true, completion: {
-            ACTION in controller.prefersStatusBarHidden
-        })
+            action in controller.prefersStatusBarHidden
+        })//MARK: Really want to know how to hide the status bar in imagepicker view. How to do this changed in Swift 3.
         
         shareButton.isEnabled = true
     }
@@ -107,7 +106,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     @IBAction func cancelMeme(_ sender: AnyObject) {
-        reset()
+        dismiss(animated: true, completion: nil)
     }
     
     
@@ -123,31 +122,39 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: UITextFieldDelegate methods.
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var newText = textField.text! as NSString
+        newText = newText.replacingCharacters(in: range, with: string) as NSString
+        let textSize: CGSize = newText.size(attributes: [NSFontAttributeName: textField.font!])
+        return textSize.width < textField.bounds.size.width
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        if textField.text! == "TOP" || textField.text! == "BOTTOM" {
+            textField.text = ""
+        }
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     
     //MARK: UIConfiguration methods.
     private func configureUI() {
-        configureText(topTextField)
-        configureText(bottomTextField)
+        configureText(topTextField, "TOP")
+        configureText(bottomTextField, "BOTTOM")
         hideShare(true)
     }
     
-    private func configureText(_ textField: UITextField){
+    private func configureText(_ textField: UITextField, _ text: String){
         textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = NSTextAlignment.center
-        switch textField.tag {
-        case 0:
-            textField.text = "TOP"
-        case 1:
-            textField.text = "BOTTOM"
-        default:
-            textField.text = "ERROR"
-            let alertController = UIAlertController()
-            alertController.title = "Meme Me Error"
-            alertController.message = "There was an error while configuring the app."
-            let okAction = UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: {action in self.dismiss(animated: true, completion: nil)})
-            alertController.addAction(okAction)
-            present(alertController, animated: true, completion: nil)
-        }
+        textField.text = text
     }
     
     private func hideUIElements(_ hide: Bool) {

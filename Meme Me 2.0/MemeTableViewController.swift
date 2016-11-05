@@ -52,7 +52,9 @@ class MemeTableViewController: UITableViewController {
     }
     
     
-    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     
 }

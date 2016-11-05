@@ -62,4 +62,8 @@ class MemeCollectionViewController: UICollectionViewController {
         self.navigationController?.pushViewController(detailController, animated: true)
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
 }

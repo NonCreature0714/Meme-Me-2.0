@@ -33,4 +33,7 @@ class MemeDetailViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
 }

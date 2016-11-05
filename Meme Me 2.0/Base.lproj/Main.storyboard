@@ -9,6 +9,11 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="impact.ttf">
+            <string>Impact</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Tab Bar Controller-->
         <scene sceneID="PPY-k2-w0A">
@@ -89,8 +94,26 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JAb-5H-hhQ">
+                                <rect key="frame" x="0.0" y="44" width="375" height="565"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qrv-tR-rQj">
+                                <rect key="frame" x="16" y="77" width="343" height="59"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GMq-iI-BNT">
+                                <rect key="frame" x="16" y="547" width="343" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="Wm2-JT-qWo"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQh-1D-gvw">
-                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                 <items>
                                     <barButtonItem systemItem="action" id="myz-Zb-AN6">
                                         <connections>
@@ -98,29 +121,13 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="W9W-KN-zkp"/>
-                                    <barButtonItem systemItem="cancel" id="nMx-ZM-CJ1">
+                                    <barButtonItem title="Cancel/Done" id="nMx-ZM-CJ1">
                                         <connections>
                                             <action selector="cancelMeme:" destination="GaT-20-GhO" id="abW-hE-oSF"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JAb-5H-hhQ">
-                                <rect key="frame" x="0.0" y="108" width="375" height="452"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qrv-tR-rQj">
-                                <rect key="frame" x="16" y="141" width="343" height="30"/>
-                                <attributedString key="attributedText"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GMq-iI-BNT">
-                                <rect key="frame" x="16" y="498" width="343" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="Wm2-JT-qWo"/>
-                                </constraints>
-                                <attributedString key="attributedText"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.074238989637305686" green="0.074238989637305686" blue="0.074238989637305686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -129,7 +136,7 @@
                             <constraint firstItem="QQh-1D-gvw" firstAttribute="leading" secondItem="Ig6-AE-6ga" secondAttribute="leading" id="AFz-Q8-cN8"/>
                             <constraint firstItem="GMq-iI-BNT" firstAttribute="trailing" secondItem="qrv-tR-rQj" secondAttribute="trailing" id="APJ-N2-Lg3"/>
                             <constraint firstItem="JAb-5H-hhQ" firstAttribute="bottom" secondItem="ulM-Il-2sz" secondAttribute="top" constant="-58" id="OyX-on-lwy"/>
-                            <constraint firstItem="JAb-5H-hhQ" firstAttribute="top" secondItem="qrv-tR-rQj" secondAttribute="bottom" constant="-63" id="c6V-uC-BWW"/>
+                            <constraint firstItem="JAb-5H-hhQ" firstAttribute="top" secondItem="qrv-tR-rQj" secondAttribute="bottom" constant="-92" id="c6V-uC-BWW"/>
                             <constraint firstItem="QQh-1D-gvw" firstAttribute="trailing" secondItem="Ig6-AE-6ga" secondAttribute="trailing" id="cIK-NN-wgE"/>
                             <constraint firstItem="QQh-1D-gvw" firstAttribute="top" secondItem="w3k-Ak-rqz" secondAttribute="bottom" id="fpV-lA-tXd"/>
                             <constraint firstItem="JAb-5H-hhQ" firstAttribute="trailing" secondItem="QQh-1D-gvw" secondAttribute="trailing" id="hdm-O4-f1r"/>
@@ -143,6 +150,7 @@
                             <constraint firstItem="JAb-5H-hhQ" firstAttribute="top" secondItem="QQh-1D-gvw" secondAttribute="bottom" id="zwv-uN-2JP"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="bottomTextField" destination="GMq-iI-BNT" id="f1L-Av-4w0"/>
                         <outlet property="cameraPickerButton" destination="DZ9-ob-OOL" id="4HE-Sk-U3A"/>
@@ -158,12 +166,12 @@
             </objects>
             <point key="canvasLocation" x="1277.5999999999999" y="-7.6461769115442282"/>
         </scene>
-        <!--Table-->
+        <!--Navigation Controller-->
         <scene sceneID="k1p-tG-rAs">
             <objects>
                 <navigationController id="UVd-kg-MTw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Table" id="Kzg-Io-kU4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="56P-n7-oO7">
+                    <tabBarItem key="tabBarItem" title="" image="Table Icon" id="Kzg-Io-kU4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="56P-n7-oO7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -217,7 +225,7 @@
                     <navigationItem key="navigationItem" title="Meme History" id="vC7-jL-uW9">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="p4F-9G-za1">
                             <connections>
-                                <segue destination="GaT-20-GhO" kind="show" id="5Rf-ho-2GZ"/>
+                                <segue destination="GaT-20-GhO" kind="presentation" id="R7N-tC-aNW"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -226,12 +234,12 @@
             </objects>
             <point key="canvasLocation" x="149.59999999999999" y="374.66266866566718"/>
         </scene>
-        <!--Collection-->
+        <!--Navigation Controller-->
         <scene sceneID="kKG-D7-gUY">
             <objects>
                 <navigationController id="oai-ZP-QNq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Collection" id="Qwk-uW-RA5"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rui-ss-TUQ">
+                    <tabBarItem key="tabBarItem" title="" image="Collection Icon" id="Qwk-uW-RA5"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Rui-ss-TUQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -247,7 +255,7 @@
         <scene sceneID="yej-Qm-p7g">
             <objects>
                 <collectionViewController id="S81-hk-nNN" customClass="MemeCollectionViewController" customModule="Meme_Me_2_0" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Ur9-Bk-bfF">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="Ur9-Bk-bfF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -286,7 +294,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="b0e-LV-G07"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="RAi-S8-Lkv" userLabel="MakeMeme">
                             <connections>
-                                <segue destination="GaT-20-GhO" kind="show" id="bVl-se-Chn"/>
+                                <segue destination="GaT-20-GhO" kind="presentation" id="aCC-aX-bcH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -299,7 +307,11 @@
             <point key="canvasLocation" x="149.59999999999999" y="-412.44377811094455"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Collection Icon" width="30" height="30"/>
+        <image name="Table Icon" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5Rf-ho-2GZ"/>
+        <segue reference="aCC-aX-bcH"/>
     </inferredMetricsTieBreakers>
 </document>

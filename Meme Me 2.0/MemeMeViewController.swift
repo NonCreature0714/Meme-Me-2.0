@@ -19,10 +19,12 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     
+    
+    @IBOutlet weak var cancelToolbarButton: UIBarButtonItem!
     
     @IBOutlet weak var pickerToolbar: UIToolbar!
-    @IBOutlet weak var cancelToolbarButton: UIBarButtonItem!
     @IBOutlet weak var shareOrCancelToolbar: UIToolbar!
     
     
@@ -36,12 +38,15 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         ] as [String : Any]
     var memed: UIImage?
     
+    
     //MARK: Overriden UIViewController methods.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cameraPickerButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         subcribeToKeyboardNotifications()
         super.tabBarController?.tabBar.isHidden = true
+        shareOrCancelToolbar.updateConstraints()
+        super.navigationController?.navigationBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -84,9 +89,9 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
             present(alertController, animated: true, completion: nil)
         }
         
-        
         present(controller, animated: true, completion: {
             action in controller.prefersStatusBarHidden
+            
         })//MARK: Really want to know how to hide the status bar in imagepicker view. How to do this changed in Swift 3.
         
         shareButton.isEnabled = true
@@ -98,9 +103,12 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         activityController.completionWithItemsHandler = { type, completed, returnedItems, error -> Void in
             if completed {
+                self.cancelToolbarButton.title = "Done"
                 self.save()
             }
         }
+        
+        
         
         present(activityController, animated: true, completion: nil)
     }

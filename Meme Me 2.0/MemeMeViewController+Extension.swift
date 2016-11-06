@@ -26,7 +26,7 @@ extension MemeMeViewController {
     //MARK: Screen manipulation methods, to move the UIView up when the bottom text field is editing.
     func keyboardWillShow(_ notification: Notification) {
         if bottomTextField.isEditing {
-            view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y =  getKeyboardHeight(notification) * -1
         }
     }
     

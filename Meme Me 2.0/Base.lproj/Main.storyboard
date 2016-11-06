@@ -78,88 +78,94 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ig6-AE-6ga">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dsC-yb-tXU">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem tag="1" systemItem="camera" id="DZ9-ob-OOL">
+                                    <barButtonItem tag="1" systemItem="camera" id="vMZ-4E-zlV">
                                         <connections>
-                                            <action selector="pickImage:" destination="GaT-20-GhO" id="TX1-gX-diO"/>
+                                            <action selector="pickImage:" destination="GaT-20-GhO" id="W6D-GA-fJy"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Zxr-rf-c3j"/>
-                                    <barButtonItem title="Album" id="OmI-CA-p7F">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ucD-bk-jPK"/>
+                                    <barButtonItem systemItem="organize" id="x7a-ld-hWh">
                                         <connections>
-                                            <action selector="pickImage:" destination="GaT-20-GhO" id="bqp-SM-3vz"/>
+                                            <action selector="pickImage:" destination="GaT-20-GhO" id="S3h-x1-vrs"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JAb-5H-hhQ">
-                                <rect key="frame" x="0.0" y="44" width="375" height="565"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="shw-kQ-NZT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="action" id="UwA-gd-5kt">
+                                        <connections>
+                                            <action selector="shareMeme:" destination="GaT-20-GhO" id="Wcx-2w-OaZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RaD-h3-aX1"/>
+                                    <barButtonItem title="Cancel" id="9E7-YZ-cm6">
+                                        <connections>
+                                            <action selector="cancelMeme:" destination="GaT-20-GhO" id="Atv-Mq-ifc"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XaD-h3-WhS">
+                                <rect key="frame" x="16" y="58" width="343" height="551"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qrv-tR-rQj">
-                                <rect key="frame" x="16" y="77" width="343" height="59"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GMq-iI-BNT">
-                                <rect key="frame" x="16" y="547" width="343" height="41"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K0i-ZR-K56">
+                                <rect key="frame" x="16" y="553" width="343" height="45"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="Wm2-JT-qWo"/>
+                                    <constraint firstAttribute="height" constant="45" id="hV1-fx-WEe"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QQh-1D-gvw">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem systemItem="action" id="myz-Zb-AN6">
-                                        <connections>
-                                            <action selector="shareMeme:" destination="GaT-20-GhO" id="VEX-dg-t7d"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="W9W-KN-zkp"/>
-                                    <barButtonItem title="Cancel/Done" id="nMx-ZM-CJ1">
-                                        <connections>
-                                            <action selector="cancelMeme:" destination="GaT-20-GhO" id="abW-hE-oSF"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AIJ-ry-O5H">
+                                <rect key="frame" x="16" y="68" width="343" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="FuM-Qq-UZ8"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.074238989637305686" green="0.074238989637305686" blue="0.074238989637305686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Ig6-AE-6ga" secondAttribute="bottom" id="26k-S8-FGx"/>
-                            <constraint firstItem="qrv-tR-rQj" firstAttribute="leading" secondItem="GQg-ES-brK" secondAttribute="leadingMargin" id="9jl-gS-BNn"/>
-                            <constraint firstItem="QQh-1D-gvw" firstAttribute="leading" secondItem="Ig6-AE-6ga" secondAttribute="leading" id="AFz-Q8-cN8"/>
-                            <constraint firstItem="GMq-iI-BNT" firstAttribute="trailing" secondItem="qrv-tR-rQj" secondAttribute="trailing" id="APJ-N2-Lg3"/>
-                            <constraint firstItem="JAb-5H-hhQ" firstAttribute="bottom" secondItem="ulM-Il-2sz" secondAttribute="top" constant="-58" id="OyX-on-lwy"/>
-                            <constraint firstItem="JAb-5H-hhQ" firstAttribute="top" secondItem="qrv-tR-rQj" secondAttribute="bottom" constant="-92" id="c6V-uC-BWW"/>
-                            <constraint firstItem="QQh-1D-gvw" firstAttribute="trailing" secondItem="Ig6-AE-6ga" secondAttribute="trailing" id="cIK-NN-wgE"/>
-                            <constraint firstItem="QQh-1D-gvw" firstAttribute="top" secondItem="w3k-Ak-rqz" secondAttribute="bottom" id="fpV-lA-tXd"/>
-                            <constraint firstItem="JAb-5H-hhQ" firstAttribute="trailing" secondItem="QQh-1D-gvw" secondAttribute="trailing" id="hdm-O4-f1r"/>
-                            <constraint firstAttribute="trailing" secondItem="QQh-1D-gvw" secondAttribute="trailing" id="jJy-eR-RD8"/>
-                            <constraint firstItem="JAb-5H-hhQ" firstAttribute="leading" secondItem="QQh-1D-gvw" secondAttribute="leading" id="oDq-ny-ZkA"/>
-                            <constraint firstItem="qrv-tR-rQj" firstAttribute="top" secondItem="QQh-1D-gvw" secondAttribute="bottom" constant="33" id="qMv-ca-ezv"/>
-                            <constraint firstItem="GMq-iI-BNT" firstAttribute="leading" secondItem="qrv-tR-rQj" secondAttribute="leading" id="tZg-Ha-vaL"/>
-                            <constraint firstItem="ulM-Il-2sz" firstAttribute="top" secondItem="GMq-iI-BNT" secondAttribute="bottom" constant="79" id="xCD-IS-dka"/>
-                            <constraint firstItem="QQh-1D-gvw" firstAttribute="leading" secondItem="GQg-ES-brK" secondAttribute="leading" id="ypj-Y7-61a"/>
-                            <constraint firstItem="qrv-tR-rQj" firstAttribute="centerX" secondItem="QQh-1D-gvw" secondAttribute="centerX" id="z8n-Em-vBP"/>
-                            <constraint firstItem="JAb-5H-hhQ" firstAttribute="top" secondItem="QQh-1D-gvw" secondAttribute="bottom" id="zwv-uN-2JP"/>
+                            <constraint firstItem="dsC-yb-tXU" firstAttribute="leading" secondItem="GQg-ES-brK" secondAttribute="leading" id="1UK-HG-0g9"/>
+                            <constraint firstItem="ulM-Il-2sz" firstAttribute="top" secondItem="shw-kQ-NZT" secondAttribute="bottom" constant="623" id="2g1-wD-oP9"/>
+                            <constraint firstItem="dsC-yb-tXU" firstAttribute="top" secondItem="K0i-ZR-K56" secondAttribute="bottom" constant="25" id="3zQ-nf-syv"/>
+                            <constraint firstItem="XaD-h3-WhS" firstAttribute="top" secondItem="w3k-Ak-rqz" secondAttribute="bottom" constant="58" id="9hD-mT-3jg"/>
+                            <constraint firstItem="AIJ-ry-O5H" firstAttribute="leading" secondItem="XaD-h3-WhS" secondAttribute="leading" id="DK8-O0-V3o"/>
+                            <constraint firstAttribute="trailing" secondItem="dsC-yb-tXU" secondAttribute="trailing" id="Hjm-sq-piq"/>
+                            <constraint firstItem="dsC-yb-tXU" firstAttribute="top" secondItem="K0i-ZR-K56" secondAttribute="bottom" constant="25" id="U1Z-M8-x9G"/>
+                            <constraint firstItem="dsC-yb-tXU" firstAttribute="top" secondItem="XaD-h3-WhS" secondAttribute="bottom" constant="14" id="UvA-WP-3Go"/>
+                            <constraint firstItem="XaD-h3-WhS" firstAttribute="centerY" secondItem="GQg-ES-brK" secondAttribute="centerY" id="ZMu-Em-0cm"/>
+                            <constraint firstItem="AIJ-ry-O5H" firstAttribute="trailing" secondItem="XaD-h3-WhS" secondAttribute="trailing" id="atE-Gb-UDN"/>
+                            <constraint firstItem="XaD-h3-WhS" firstAttribute="top" secondItem="shw-kQ-NZT" secondAttribute="bottom" constant="14" id="au9-dE-k7m"/>
+                            <constraint firstItem="AIJ-ry-O5H" firstAttribute="trailing" secondItem="K0i-ZR-K56" secondAttribute="trailing" id="brK-Un-Idb"/>
+                            <constraint firstItem="dsC-yb-tXU" firstAttribute="top" secondItem="w3k-Ak-rqz" secondAttribute="bottom" constant="623" id="ciO-kG-jmZ"/>
+                            <constraint firstItem="AIJ-ry-O5H" firstAttribute="top" secondItem="shw-kQ-NZT" secondAttribute="bottom" constant="24" id="hFL-3q-9DL"/>
+                            <constraint firstItem="shw-kQ-NZT" firstAttribute="trailing" secondItem="dsC-yb-tXU" secondAttribute="trailing" id="ixV-fP-E3Z"/>
+                            <constraint firstItem="shw-kQ-NZT" firstAttribute="leading" secondItem="dsC-yb-tXU" secondAttribute="leading" id="lIn-nT-OYb"/>
+                            <constraint firstItem="XaD-h3-WhS" firstAttribute="centerX" secondItem="GQg-ES-brK" secondAttribute="centerX" id="nS0-8r-A3a"/>
+                            <constraint firstItem="AIJ-ry-O5H" firstAttribute="leading" secondItem="K0i-ZR-K56" secondAttribute="leading" id="oMi-Ie-j7G"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="XaD-h3-WhS" secondAttribute="leading" id="ucF-0N-2wo"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <outlet property="bottomTextField" destination="GMq-iI-BNT" id="f1L-Av-4w0"/>
-                        <outlet property="cameraPickerButton" destination="DZ9-ob-OOL" id="4HE-Sk-U3A"/>
-                        <outlet property="cancelToolbarButton" destination="nMx-ZM-CJ1" id="LiP-Nw-TBf"/>
-                        <outlet property="imagePickedView" destination="JAb-5H-hhQ" id="KVd-MG-US0"/>
-                        <outlet property="pickerToolbar" destination="Ig6-AE-6ga" id="Tzx-xJ-tg4"/>
-                        <outlet property="shareButton" destination="myz-Zb-AN6" id="8DC-UB-aud"/>
-                        <outlet property="shareOrCancelToolbar" destination="QQh-1D-gvw" id="HCt-49-J5Z"/>
-                        <outlet property="topTextField" destination="qrv-tR-rQj" id="nHA-D8-8Mo"/>
+                        <outlet property="bottomTextField" destination="K0i-ZR-K56" id="1BZ-sh-ZYL"/>
+                        <outlet property="cameraPickerButton" destination="vMZ-4E-zlV" id="yIr-9g-I9Z"/>
+                        <outlet property="cancelBarButton" destination="9E7-YZ-cm6" id="pHS-6g-fhV"/>
+                        <outlet property="cancelToolbarButton" destination="9E7-YZ-cm6" id="IhA-Aw-qIx"/>
+                        <outlet property="imagePickedView" destination="XaD-h3-WhS" id="jVz-DO-bus"/>
+                        <outlet property="pickerToolbar" destination="dsC-yb-tXU" id="TC6-md-SeB"/>
+                        <outlet property="shareButton" destination="UwA-gd-5kt" id="WmT-Ev-apz"/>
+                        <outlet property="shareOrCancelToolbar" destination="shw-kQ-NZT" id="2tO-GJ-FCk"/>
+                        <outlet property="topTextField" destination="AIJ-ry-O5H" id="Dv2-7E-sym"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FbE-qH-KjE" userLabel="First Responder" sceneMemberID="firstResponder"/>

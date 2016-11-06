@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-import UIKit
-
 class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     //MARK: IBOutlet(s).
@@ -19,8 +17,6 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var shareButton: UIBarButtonItem!
-    @IBOutlet weak var cancelBarButton: UIBarButtonItem!
-    
     
     @IBOutlet weak var cancelToolbarButton: UIBarButtonItem!
     

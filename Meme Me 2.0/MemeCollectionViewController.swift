@@ -16,7 +16,13 @@ class MemeCollectionViewController: UICollectionViewController {
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     //MARK: Members
-    var memes: [Meme]!
+    //var memes: [Meme]!
+    var memes: [Meme]! = {
+        let applicationDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        return applicationDelegate.memes
+        //return (UIApplication.shared.delegate as! AppDelegate).memes
+    }()
+
     
     
     //MARK: Overriden UIViewController methods.
@@ -40,7 +46,6 @@ class MemeCollectionViewController: UICollectionViewController {
         reloadInputViews()
         flowLayout.collectionView?.reloadData()
     }
-    
     
     //MARK: Overriden CollectionView Datasource methods.
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

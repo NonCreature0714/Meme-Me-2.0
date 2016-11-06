@@ -12,7 +12,12 @@ import UIKit
 class MemeTableViewController: UITableViewController {
     
     //MARK: members
-    var memes: [Meme]!
+    //var memes: [Meme]!
+    var memes: [Meme]! = {
+        let applicationDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        return applicationDelegate.memes
+        //return (UIApplication.shared.delegate as! AppDelegate).memes
+    }()
     
     //MARK: overriden UIViewController methods
     override func viewDidLoad() {

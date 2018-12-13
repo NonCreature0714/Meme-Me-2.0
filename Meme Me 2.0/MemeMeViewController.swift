@@ -27,10 +27,10 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     //MARK: Member(s)
     var meme = Meme()
         let memeTextAttributes = [
-        NSStrokeColorAttributeName : UIColor.black,
-        NSForegroundColorAttributeName : UIColor.white,
-        NSStrokeWidthAttributeName: -5.0,
-        NSFontAttributeName : UIFont(name: "Impact", size: 40)!,
+        convertFromNSAttributedStringKey(NSAttributedString.Key.strokeColor) : UIColor.black,
+        convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) : UIColor.white,
+        convertFromNSAttributedStringKey(NSAttributedString.Key.strokeWidth): -5.0,
+        convertFromNSAttributedStringKey(NSAttributedString.Key.font) : UIFont(name: "Impact", size: 40)!,
         ] as [String : Any]
     var memed: UIImage?
     
@@ -38,7 +38,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     //MARK: Overriden UIViewController methods.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        cameraPickerButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
+        cameraPickerButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)
         subcribeToKeyboardNotifications()
         super.tabBarController?.tabBar.isHidden = true
         shareOrCancelToolbar.updateConstraints()
@@ -73,22 +73,20 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         switch sender.tag {
         case 0:
-            controller.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            controller.sourceType = UIImagePickerController.SourceType.photoLibrary
         case 1:
-            controller.sourceType = UIImagePickerControllerSourceType.camera
+            controller.sourceType = UIImagePickerController.SourceType.camera
         default:
             let alertController = UIAlertController()
             alertController.title = "Meme Me Error"
             alertController.message = "There was an error while choosing an image."
-            let okAction = UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: {action in self.dismiss(animated: true, completion: nil)})
+            let okAction = UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: {action in self.dismiss(animated: true, completion: nil)})
             alertController.addAction(okAction)
             present(alertController, animated: true, completion: nil)
         }
         
-        present(controller, animated: true, completion: {
-            action in controller.prefersStatusBarHidden
-            
-        })//MARK: Really want to know how to hide the status bar in imagepicker view. How to do this changed in Swift 3.
+        present(controller, animated: true, completion: nil)
+        //MARK: Really want to know how to hide the status bar in imagepicker view. How to do this changed in Swift 3.
         
         shareButton.isEnabled = true
     }
@@ -115,8 +113,11 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     
     //MARK: UIImagePickerDelegate methods.
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+        if let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage {
             imagePickedView.image = image
         }
         dismiss(animated: true, completion: nil)
@@ -130,7 +131,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         var newText = textField.text! as NSString
         newText = newText.replacingCharacters(in: range, with: string) as NSString
-        let textSize: CGSize = newText.size(attributes: [NSFontAttributeName: textField.font!])
+        let textSize: CGSize = newText.size(withAttributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): textField.font!]))
         return textSize.width < textField.bounds.size.width
     }
     
@@ -156,7 +157,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     private func configureText(_ textField: UITextField, _ text: String){
-        textField.defaultTextAttributes = memeTextAttributes
+        textField.defaultTextAttributes = convertToNSAttributedStringKeyDictionary(memeTextAttributes)
         textField.textAlignment = NSTextAlignment.center
         textField.text = text
     }
@@ -201,4 +202,30 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

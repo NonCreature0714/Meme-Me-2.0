@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Meme Me needs to access Photo Library! 🕵️‍♂️</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Meme Me need access to the camera! 😎</string>
 	<key>UIAppFonts</key>
